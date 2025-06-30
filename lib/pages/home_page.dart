@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 8),
 
-                            // Status Laporan dengan badge
+                            // Status Laporan dengan badge.com
                             Align(
                               alignment: Alignment.centerRight,
                               child: Chip(
