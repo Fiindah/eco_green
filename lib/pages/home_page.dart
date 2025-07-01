@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eco_green/api/reports_api.dart';
 import 'package:eco_green/constant/app_color.dart';
-import 'package:eco_green/models/list_laporan_response.dart';
+import 'package:eco_green/models/list_laporan_response.dart'; // Menggunakan ListLaporanResponse
 import 'package:eco_green/pages/add_report_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // Untuk format tanggal
@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<ListLaporanResponse>
-  _futureReports; // Ubah ke ListLaporanResponse
+  _futureReports; // Tipe Future ListLaporanResponse
 
   @override
   void initState() {
@@ -35,20 +35,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'EcoGreen',
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: AppColor.mygreen,
+        foregroundColor: Colors.white,
         centerTitle: false,
       ),
       body: RefreshIndicator(
         // Menambahkan fitur pull-to-refresh
         onRefresh: _refreshReports,
         child: FutureBuilder<ListLaporanResponse>(
+          // Tipe FutureBuilder ListLaporanResponse
           future: _futureReports,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -107,12 +106,13 @@ class _HomePageState extends State<HomePage> {
               );
             } else {
               // Data berhasil dimuat, tampilkan daftar laporan
-              final List<Data> reports = snapshot.data!.data!;
+              final List<Data> reports =
+                  snapshot.data!.data!; // Menggunakan Data
               return ListView.builder(
                 padding: const EdgeInsets.all(8.0),
                 itemCount: reports.length,
                 itemBuilder: (context, index) {
-                  final Data report = reports[index];
+                  final Data report = reports[index]; // Menggunakan Data
                   return Card(
                     elevation: 4,
                     margin: const EdgeInsets.symmetric(
@@ -150,19 +150,22 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 8),
 
-                            // Status Laporan dengan badge.com
+                            // Status Laporan dengan badge
                             Align(
                               alignment: Alignment.centerRight,
                               child: Chip(
                                 label: Text(
-                                  report.status?.toUpperCase() ??
+                                  report.status
+                                          ?.toUpperCase() ?? // Langsung toUpperCase()
                                       'STATUS TIDAK DIKETAHUI',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                backgroundColor: _getStatusColor(report.status),
+                                backgroundColor: _getStatusColor(
+                                  report.status,
+                                ), // Parameter String?
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 8,
                                   vertical: 4,
@@ -221,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    'Pelapor: ${report.user!.name}',
+                                    'Pelapor: ${report.user!.name}', // Langsung akses name (String)
                                     style: const TextStyle(
                                       fontSize: 13,
                                       color: Colors.grey,
@@ -236,14 +239,16 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Dibuat: ${report.createdAt != null ? DateFormat('dd MMM yyyy HH:mm').format(report.createdAt!.toLocal()) : 'N/A'}',
+                                  // Perbaikan: Hapus 'insertBefore'
+                                  'Dibuat: ${report.createdAt != null ? DateFormat('dd MMM HH:mm').format(report.createdAt!.toLocal()) : 'N/A'}',
                                   style: const TextStyle(
                                     fontSize: 12,
                                     color: Colors.grey,
                                   ),
                                 ),
                                 Text(
-                                  'Diperbarui: ${report.updatedAt != null ? DateFormat('dd MMM yyyy HH:mm').format(report.updatedAt!.toLocal()) : 'N/A'}',
+                                  // Perbaikan: Hapus 'insertBefore'
+                                  'Diperbarui: ${report.updatedAt != null ? DateFormat('dd MMM HH:mm').format(report.updatedAt!.toLocal()) : 'N/A'}',
                                   style: const TextStyle(
                                     fontSize: 12,
                                     color: Colors.grey,
@@ -273,16 +278,19 @@ class _HomePageState extends State<HomePage> {
           }
         },
         tooltip: 'Tambah Laporan',
-        child: Icon(Icons.add),
+        backgroundColor: AppColor.mygreen,
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
       ),
     );
   }
 
+  // Parameter String? status sudah benar
   Color _getStatusColor(String? status) {
     switch (status?.toLowerCase()) {
       case 'masuk':
         return Colors.blue;
-      case 'proses':
+      case 'proses': // Anda bisa menambahkan ini jika ada di API
         return Colors.orange;
       case 'selesai':
         return Colors.green;

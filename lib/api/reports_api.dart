@@ -34,6 +34,7 @@ class ReportService {
     required String judul,
     required String isi,
     required dynamic status,
+    required dynamic lokasi,
     String? imageUrl,
   }) async {
     final token = await _getAuthToken();
@@ -42,6 +43,7 @@ class ReportService {
       "judul": judul,
       "isi": isi,
       "status": status,
+      "lokasi": lokasi,
     };
     if (imageUrl != null && imageUrl.isNotEmpty) {
       body["image_url"] = imageUrl;
@@ -104,6 +106,7 @@ class ReportService {
     required String isi,
     String? imageUrl,
     required String status,
+    required dynamic lokasi,
   }) async {
     final token = await _getAuthToken();
 
@@ -112,9 +115,11 @@ class ReportService {
     );
 
     final Map<String, dynamic> body = {
+      "report": reportId,
       "judul": judul,
       "isi": isi,
       "status": status,
+      "lokasi": lokasi,
     };
     if (imageUrl != null && imageUrl.isNotEmpty) {
       body["image_url"] = imageUrl;

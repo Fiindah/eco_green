@@ -1,3 +1,4 @@
+import 'package:eco_green/constant/app_color.dart';
 import 'package:eco_green/constant/app_image.dart';
 import 'package:eco_green/constant/app_style.dart';
 import 'package:eco_green/helper/preference.dart';
@@ -73,16 +74,24 @@ class _SplashScreenState extends State<SplashScreen>
                 width: 200,
                 child: Image.asset(AppImage.logo), // Ensure correct path
               ),
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               // App Title
               Text(
                 "Jaga Bumi Kita,",
-                style: AppStyle.fontBold(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.mygreen,
+                ),
                 textAlign: TextAlign.center,
               ),
               Text(
                 "Laporkan Sampah",
-                style: AppStyle.fontBold(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.mygreen,
+                ),
                 textAlign: TextAlign.center,
               ),
               const Spacer(),

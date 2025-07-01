@@ -25,16 +25,17 @@ class WelcomePage extends StatelessWidget {
               // App Logo
               Image.asset(
                 AppImage.logo,
-                height: 180, // Adjusted size for welcome page
-                width: 180,
+                height: 200, // Adjusted size for welcome page
+                width: 200,
               ),
-              const SizedBox(height: 48), // Increased space
+              const SizedBox(height: 28), // Increased space
               // Welcome Title
               Text(
                 "Selamat Datang di EcoGreen!",
-                style: AppStyle.fontBold(
-                  fontSize: 32,
-                  // color: AppColor.mygreen,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                  color: AppColor.mygreen,
                 ), // Larger, bolder
                 textAlign: TextAlign.center,
               ),

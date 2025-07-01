@@ -42,6 +42,7 @@ class Data {
   DateTime? updatedAt; // Mengubah dari String? menjadi DateTime?
   // String? imagePath; // Bisa dihapus jika tidak digunakan untuk tampilan daftar
   String? imageUrl;
+  String? lokasi;
   User? user;
 
   Data({
@@ -54,6 +55,7 @@ class Data {
     this.updatedAt,
     // this.imagePath,
     this.imageUrl,
+    this.lokasi,
     this.user,
   });
 
@@ -69,6 +71,7 @@ class Data {
         json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
     // imagePath: json["image_path"],
     imageUrl: json["image_url"],
+    lokasi: json["lokasi"],
     user: json["user"] == null ? null : User.fromJson(json["user"]),
   );
 
@@ -82,6 +85,7 @@ class Data {
     "updated_at": updatedAt?.toIso8601String(), // Ubah kembali ke String ISO
     // "image_path": imagePath,
     "image_url": imageUrl,
+    "lokasi": lokasi,
     "user": user?.toJson(),
   };
 }
