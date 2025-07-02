@@ -1,5 +1,7 @@
 import 'package:eco_green/constant/app_color.dart';
 import 'package:eco_green/pages/home_page.dart';
+import 'package:eco_green/pages/profile_page.dart';
+import 'package:eco_green/pages/statistic_page.dart';
 import 'package:flutter/material.dart';
 
 class MainWrapperPage extends StatefulWidget {
@@ -18,6 +20,9 @@ class _MainWrapperPageState extends State<MainWrapperPage> {
   // List of pages to be displayed in the BottomNavigationBar
   final List<Widget> _pages = [
     const HomePage(),
+    const StatisticPage(),
+    const ProfilePage(),
+
     // const HistoryPage(),
     // const StatisticPage(),
   ];
@@ -65,11 +70,11 @@ class _MainWrapperPageState extends State<MainWrapperPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Riwayat'),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),
             label: 'Statistik',
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
         ],
         currentIndex: _selectedIndex, // Current selected item
         selectedItemColor: AppColor.mygreen, // Color for selected icon/label

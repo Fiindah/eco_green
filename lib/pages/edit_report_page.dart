@@ -1,3 +1,21 @@
+import 'package:flutter/material.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Column(children: [Text("Halaman Home")])),
+    );
+  }
+}
+
 // import 'package:flutter/material.dart';
 // import 'package:eco_green/api/reports_api.dart';
 // import 'package:eco_green/constant/app_color.dart';

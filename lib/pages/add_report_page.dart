@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io'; // Untuk File
 
 import 'package:eco_green/api/reports_api.dart';
@@ -65,14 +66,27 @@ class _AddReportPageState extends State<AddReportPage> {
       });
       return;
     }
-
+    String? imageBase64String;
+    if (_imageFile != null) {
+      try {
+        List<int> imageBytes = await _imageFile!.readAsBytes();
+        imageBase64String = base64Encode(imageBytes);
+      } catch (e) {
+        setState(() {
+          _message = 'Gagal mengonversi gambar ke Base64: $e';
+          _isSuccess = false;
+          _isLoading = false;
+        });
+        return;
+      }
+    }
     try {
       final response = await _reportService.postReport(
         judul: _judulController.text,
         isi: _isiController.text,
         lokasi: _lokasiController.text,
         status: 'masuk', // Status default selalu 'masuk'
-        // imageFile: _imageFile, // Meneruskan file gambar
+        imageUrl: imageBase64String, // Meneruskan file gambar
       );
 
       setState(() {

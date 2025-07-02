@@ -1,5 +1,6 @@
 import 'package:eco_green/login_page.dart';
 import 'package:eco_green/pages/main_wrapper_page.dart';
+import 'package:eco_green/pages/profile_page.dart';
 import 'package:eco_green/register_page.dart';
 import 'package:eco_green/splash_page.dart';
 import 'package:eco_green/welcome_page.dart';
@@ -32,8 +33,7 @@ class MyApp extends StatelessWidget {
         LoginScreenApi.id: (context) => const LoginScreenApi(),
         RegisterScreenAPI.id: (context) => const RegisterScreenAPI(),
         MainWrapperPage.id: (context) => const MainWrapperPage(),
-        // No need to define HomePage, HistoryPage, StatisticPage here if they are only
-        // accessed via MainWrapperPage's PageView.
+        ProfilePage.id: (context) => const ProfilePage(),
       },
       debugShowCheckedModeBanner: false,
     );

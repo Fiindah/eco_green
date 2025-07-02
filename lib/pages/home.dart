@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class EditReportPage extends StatelessWidget {
+  const EditReportPage({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Column(children: [Text("Halaman Home")])),
-    );
+    return Scaffold(body: Center(child: Column(children: [Text("Halaman")])));
   }
 }

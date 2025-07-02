@@ -8,5 +8,5 @@ class Endpoint {
   static const String updateLaporan = "$baseUrlApi/laporan/{id}";
   static const String deleteLaporan = "$baseUrlApi/laporan/{id}";
   static const String riwayat = "$baseUrlApi/riwayat";
-  static const String statistik = "$baseUrlApi/statistik";
+  static const String statistikLaporan = "$baseUrlApi//statistik";
 }

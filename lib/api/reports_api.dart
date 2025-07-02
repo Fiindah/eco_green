@@ -46,7 +46,9 @@ class ReportService {
       "lokasi": lokasi,
     };
     if (imageUrl != null && imageUrl.isNotEmpty) {
-      body["image_url"] = imageUrl;
+      body["image_base64"] = imageUrl;
+      print("base64");
+      print(imageUrl);
     }
 
     final response = await http.post(

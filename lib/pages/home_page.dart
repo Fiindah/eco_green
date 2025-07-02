@@ -35,13 +35,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'EcoGreen',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: AppColor.mygreen,
         foregroundColor: Colors.white,
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: RefreshIndicator(
         // Menambahkan fitur pull-to-refresh
